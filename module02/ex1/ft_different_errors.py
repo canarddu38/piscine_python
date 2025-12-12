@@ -18,6 +18,7 @@ def garden_operations() -> None:
 
 
 def test_error_types():
+    """Function to test error types"""
     print("=== Garden Error Types Demo ===\n")
 
     print("Testing ValueError...")

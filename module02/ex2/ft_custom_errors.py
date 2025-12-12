@@ -35,28 +35,32 @@ def get_plant_status(plant_water_level: int) -> None:
         plant_water_level -= 5
 
 
-print("=== Custom Garden Errors Demo ===\n")
+def test_errors() -> None:
+    print("=== Custom Garden Errors Demo ===\n")
 
-print("Testing PlantError...")
-try:
-    get_plant_status(-5)
-except PlantError as e:
-    print(f"Caught PlantError: {e.args[0]}")
+    print("Testing PlantError...")
+    try:
+        get_plant_status(-5)
+    except PlantError as e:
+        print(f"Caught PlantError: {e.args[0]}")
 
-print("\nTesting WaterError...")
-try:
-    get_water(20)
-except WaterError as e:
-    print(f"Caught WaterError: {e.args[0]}")
-
-print("\nTesting catching all garden errors...")
-try:
-    get_plant_status(-5)
-except GardenError as e1:
-    print(f"Caught a garden error: {e1.args[0]}")
+    print("\nTesting WaterError...")
     try:
         get_water(20)
-    except GardenError as e:
-        print(f"Caught a garden error: {e.args[0]}")
+    except WaterError as e:
+        print(f"Caught WaterError: {e.args[0]}")
 
-print("\nAll custom error types work correctly!")
+    print("\nTesting catching all garden errors...")
+    try:
+        get_plant_status(-5)
+    except GardenError as e1:
+        print(f"Caught a garden error: {e1.args[0]}")
+        try:
+            get_water(20)
+        except GardenError as e:
+            print(f"Caught a garden error: {e.args[0]}")
+
+    print("\nAll custom error types work correctly!")
+
+
+test_errors()
