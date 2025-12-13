@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import sys
 import math
+import sys
 
 
 def parse_pos(text: str) -> tuple:
@@ -13,6 +13,7 @@ def parse_pos(text: str) -> tuple:
         return create_pos(int(lst[0]), int(lst[1]), int(lst[2]))
     except Exception as e:
         print(f"Caught an Exception: {e.args[0]}")
+        print(f"Error details - Type: ValueError, Args: {e.args}")
 
 
 def create_pos(x: int, y: int, z: int) -> tuple:
@@ -30,15 +31,17 @@ def distance(a: tuple, b: tuple) -> float:
 
 
 scores = []
-print("=== Game Coordinate System ===\n")
+print("=== Game Coordinate System ===")
 
-pos1 = create_pos(10, 20, 5)
-distance((0, 0, 0), pos1)
 
-print("")
-pos2 = parse_pos("3,4,0")
-distance((0, 0, 0), pos2)
+for arg in sys.argv[1:]:
+    print("")
+    pos2 = parse_pos(arg)
+    if (pos2 is not None):
+        distance((0, 0, 0), pos2)
 
-print("")
-pos2 = parse_pos("abc,def,ghi")
-distance((0, 0, 0), pos2)
+
+print("\nUnpacking demonstration:")
+x, y, z = create_pos(3, 4, 9)
+print(f"Player at x={x}, y={y}, z={z}")
+print(f"Coordinates: X={x}, Y={y}, Z={z}")
