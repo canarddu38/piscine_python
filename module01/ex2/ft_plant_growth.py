@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""Plant growth simulation utilities.
-
-Provides a Plant class with methods to grow and age the plant.
-"""
-
 
 class Plant:
     """Represents a plant with basic growth behavior."""
@@ -35,10 +30,11 @@ class Plant:
         return self.height
 
 
-plant = Plant("Rose", 20, 30)
-print("=== Day 1 ===")
-growth = plant.get_info()
-plant.age(6)
-print("=== Day 7 ===")
-growth = plant.get_info() - growth
-print(f"Growth this week: +{growth}cm")
+if __name__ == "__main__":
+    plant = Plant("Rose", 20, 30)
+    print("=== Day 1 ===")
+    growth = plant.get_info()
+    plant.age(6)
+    print("=== Day 7 ===")
+    growth = plant.get_info() - growth
+    print(f"Growth this week: +{growth}cm")

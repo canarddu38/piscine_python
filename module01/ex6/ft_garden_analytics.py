@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""Garden analytics module.
-
-Provides classes for plants and gardens, with utilities to compute stats.
-"""
-
 
 class Plant:
     """Base plant with a simple growth behavior."""
@@ -73,27 +68,29 @@ class Garden:
             self.total_growth += 1
 
 
-class GardenStats:
-    """Container for counts of plant types in a garden."""
-
-    def __init__(self, regular: int, flowering: int, prize_flowers: int):
-        """Initialize stats with counts for each category."""
-        self.regular = regular
-        self.flowering = flowering
-        self.prize_flowers = prize_flowers
-
-
 class GardenManager:
     """Manage multiple gardens and compute analytics for them."""
+
+    class GardenStats:
+        """Container for counts of plant types in a garden."""
+
+        def __init__(self, regular: int, flowering: int, prize_flowers: int):
+            """Initialize stats with counts for each category."""
+            self.regular = regular
+            self.flowering = flowering
+            self.prize_flowers = prize_flowers
 
     def __init__(self):
         """Initialize an empty garden manager."""
         self.gardens = {}
 
-    def create_garden_network(self, gardens):
+    @classmethod
+    def create_garden_network(cls, gardens):
         """Register multiple gardens at once."""
+        manager = cls()
         for garden in gardens:
-            self.add_garden(garden)
+            manager.add_garden(garden)
+        return manager
 
     def add_garden(self, garden):
         """Add a single garden to the manager."""
@@ -104,22 +101,22 @@ class GardenManager:
         return self.gardens.get(name)
 
     @staticmethod
-    def get_stats(garden: Garden) -> GardenStats:
+    def get_stats(garden: Garden) -> 'GardenManager.GardenStats':
         """Generate counts of regular, flowering and prize plants for a \
-garden."""
-        stats = GardenStats(0, 0, 0)
+        garden."""
+        stats = GardenManager.GardenStats(0, 0, 0)
 
         for p in garden.plants:
-            if type(p) is PrizeFlower:
+            if isinstance(p, PrizeFlower):
                 stats.prize_flowers += 1
-            elif type(p) is FloweringPlant:
+            elif isinstance(p, FloweringPlant):
                 stats.flowering += 1
             else:
                 stats.regular += 1
         return stats
 
     @staticmethod
-    def garden_score(stats: GardenStats) -> int:
+    def garden_score(stats: 'GardenManager.GardenStats') -> int:
         """Compute a weighted score for a garden from its stats."""
         total = stats.regular * 10
         total += stats.flowering * 50
@@ -128,12 +125,9 @@ garden."""
 
 
 if __name__ == "__main__":
-    """Run a demo of the garden analytics system."""
     print("=== Garden Management System Demo ===\n")
 
-    manager = GardenManager()
-
-    manager.create_garden_network([
+    manager = GardenManager.create_garden_network([
         Garden("Alice's garden", "Alice"),
         Garden("Bob's garden", "Bob")
     ])

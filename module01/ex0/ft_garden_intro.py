@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""Intro module for the garden project.
-
-Runs a simple script that prints basic information about a plant.
-"""
 
 if (__name__ == "__main__"):
     """Entry point for the intro script.

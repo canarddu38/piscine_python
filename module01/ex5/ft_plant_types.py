@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""Different plant types for the garden project.
-
-Defines base Plant and specialized subclasses: Flower, Tree, Vegetable.
-"""
-
 
 class Plant:
     """Base class representing a generic plant."""
@@ -91,22 +86,21 @@ class Vegetable(Plant):
         print(f"{self.name} is rich in {self.nutritional_value}")
 
 
-rose = Flower("red", "Rose", 25, 30)
-tulip = Flower("yellow", "Tulip", 20, 25)
+if __name__ == "__main__":
+    rose = Flower("red", "Rose", 25, 30)
+    tulip = Flower("yellow", "Tulip", 20, 25)
 
-oak = Tree(50, "Oak", 500, 1825)
-pine = Tree(40, "Pine", 600, 2000)
+    oak = Tree(50, "Oak", 500, 1825)
+    pine = Tree(40, "Pine", 600, 2000)
 
-tomato = Vegetable("summer", "vitamin C", "Tomato", 80, 90)
-carrot = Vegetable("autumn", "beta-carotene", "Carrot", 30, 70)
-
-
-print("=== Garden Plant Types ===")
-print(rose.info())
-rose.bloom()
-print("")
-print(oak.info())
-oak.produce_shade()
-print("")
-print(tomato.info())
-tomato.nutrition()
+    tomato = Vegetable("summer", "vitamin C", "Tomato", 80, 90)
+    carrot = Vegetable("autumn", "beta-carotene", "Carrot", 30, 70)
+    print("=== Garden Plant Types ===")
+    print(rose.info())
+    rose.bloom()
+    print("")
+    print(oak.info())
+    oak.produce_shade()
+    print("")
+    print(tomato.info())
+    tomato.nutrition()
