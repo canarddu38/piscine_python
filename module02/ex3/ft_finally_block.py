@@ -29,4 +29,4 @@ def test_watering_system() -> None:
         print("\nCleanup always happens, even with errors!")
 
 
-test_watering_system()
+# test_watering_system()

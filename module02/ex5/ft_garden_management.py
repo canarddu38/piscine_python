@@ -116,4 +116,4 @@ def test_garden_manager() -> None:
         print("\nGarden management system test complete!")
 
 
-test_garden_manager()
+# test_garden_manager()

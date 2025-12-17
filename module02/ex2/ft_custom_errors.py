@@ -63,4 +63,4 @@ def test_errors() -> None:
     print("\nAll custom error types work correctly!")
 
 
-test_errors()
+# test_errors()
