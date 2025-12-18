@@ -17,7 +17,7 @@ try:
     with open(path, "w") as f:
         print("Storage unit created successfully...\n")
         print("Inscribing preservation data...")
-        
+
         write_line(f, "{[}ENTRY 001{]} \n")
         write_line(f, "{[}ENTRY 002{]} Efficiency increased by 347%\n")
         write_line(f, "{[}ENTRY 003{]} Archived by Data Archivist trainee\n")

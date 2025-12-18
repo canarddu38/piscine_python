@@ -9,14 +9,14 @@ class GardenError(Exception):
 
 class WaterError(GardenError):
     """Main Garden Water related error class"""
-    def __init__(self):
-        super().__init__("Not enough water in the tank!")
+    def __init__(self, message="Not enough water in the tank!"):
+        super().__init__(message)
 
 
 class PlantError(GardenError):
     """Main Garden Plant related error class"""
-    def __init__(self):
-        super().__init__("The tomato plant is wilting!")
+    def __init__(self, message="The tomato plant is wilting!"):
+        super().__init__(message)
 
 
 def get_water(water_volume: int) -> int:

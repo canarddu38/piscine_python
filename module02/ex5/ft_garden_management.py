@@ -45,7 +45,7 @@ class GardenManager:
             self.tank -= amount
             return amount
         else:
-            raise GardenError("Not enough water in tank")
+            raise WaterError("Not enough water in tank")
 
     def check_plant_health(self) -> None:
         """Validate user input and returns plant status if no failure"""
@@ -95,6 +95,7 @@ def test_garden_manager() -> None:
     """Test garden manager"""
     try:
         manager = GardenManager()
+        print("Adding plants to garden...")
         manager.add_plant("tomato", 0, 8)
         manager.add_plant("lettuce", 10, 8)
         manager.add_plant(None, 5, 8)
