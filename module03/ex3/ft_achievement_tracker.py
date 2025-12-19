@@ -1,32 +1,39 @@
 #!/usr/bin/env python3
 
-players = {
-    "alice": {'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'},
-    "bob": {'first_kill', 'level_10', 'boss_slayer', 'collector'},
-    "charlie": {'level_10', 'treasure_hunter', 'boss_slayer',
-                'speed_demon', 'perfectionist'}
-}
 
-print("=== Achievement Tracker System ===\n")
-for player, achievements in players.items():
-    print(f"Player {player} achievements: {achievements}")
+def main():
+    """Main function"""
+    players = {
+        "alice": {'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'},
+        "bob": {'first_kill', 'level_10', 'boss_slayer', 'collector'},
+        "charlie": {'level_10', 'treasure_hunter', 'boss_slayer',
+                    'speed_demon', 'perfectionist'}
+    }
 
-print("\n=== Achievement Analytics ===")
+    print("=== Achievement Tracker System ===\n")
+    for player, achievements in players.items():
+        print(f"Player {player} achievements: {achievements}")
 
-A = players['alice']
-B = players['bob']
-C = players['charlie']
+    print("\n=== Achievement Analytics ===")
 
-all_achievements = A | B | C
-print(f"All unique achievements: {all_achievements}")
-print(f"Total unique achievements: {len(all_achievements)}")
+    A = players['alice']
+    B = players['bob']
+    C = players['charlie']
 
-common_achievements = A & B & C
-print(f"\nCommon to all players: {common_achievements}")
+    all_achievements = A | B | C
+    print(f"All unique achievements: {all_achievements}")
+    print(f"Total unique achievements: {len(all_achievements)}")
 
-rare_achievements = all_achievements - (A & B) - (A & C) - (B & C)
-print(f"Rare achievements (1 player): {rare_achievements}")
+    common_achievements = A & B & C
+    print(f"\nCommon to all players: {common_achievements}")
 
-print(f"\nAlice vs Bob common: {A & B}")
-print(f"\nAlice unique: {A - B}")
-print(f"\nBob unique: {B - A}")
+    rare_achievements = all_achievements - (A & B) - (A & C) - (B & C)
+    print(f"Rare achievements (1 player): {rare_achievements}")
+
+    print(f"\nAlice vs Bob common: {A & B}")
+    print(f"Alice unique: {A - B}")
+    print(f"Bob unique: {B - A}")
+
+
+if __name__ == "__main__":
+    main()
