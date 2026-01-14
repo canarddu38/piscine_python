@@ -16,5 +16,9 @@ This project is part of the 42 curriculum
 
 - [python module05](./module05)
   - `Code Nexus:` Polymorphic Data Streams in the Digital Matrix
+- [python module06](./module06)
+  - `The Codex:` Mastering Python’s Import Mysteries
+- [python module07](./module07)
+  - `DataDeck:` Master the Art of Abstract Card Architecture
 
 Credits: 0x262d, all rights reserved
