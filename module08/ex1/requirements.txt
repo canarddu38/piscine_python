@@ -1,0 +1,4 @@
+pandas>=2.0
+requests>=2.0
+matplotlib>=3.5
+numpy>=1.23
