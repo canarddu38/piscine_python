@@ -6,6 +6,9 @@ import alchemy
 
 
 def main():
+    """
+    Main function to demonstrate absolute and relative import pathways.
+    """
     print("\n=== Pathway Debate Mastery ===\n")
     print("Testing Absolute Imports (from basic.py):")
     print(f"lead_to_gold(): {lead_to_gold()}")

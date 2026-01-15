@@ -5,6 +5,9 @@ from ex0 import CreatureCard
 
 
 def main():
+    """
+    Main function to compare various card types and methods.
+    """
     print("\n=== DataDeck Deck Builder ===\n")
     print("Building deck with different card types...")
     deck = Deck()

@@ -7,6 +7,9 @@ from alchemy.elements import create_earth, create_fire
 
 
 def main():
+    """
+    Main function to demonstrate different import methods.
+    """
     print("\n=== Import Transmutation Mastery ===\n")
 
     print("Method 1 - Full module import:")

@@ -3,6 +3,9 @@ from ex0 import Card
 
 
 def main():
+    """
+    Main function to demonstrate multiple inheritance with EliteCard.
+    """
     print("=== DataDeck Ability System ===\n")
 
     print("EliteCard capabilities:")

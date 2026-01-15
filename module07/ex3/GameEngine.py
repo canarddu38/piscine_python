@@ -2,7 +2,20 @@ from ex3 import CardFactory, GameStrategy
 
 
 class GameEngine:
+    """
+    A class representing the game engine.
+
+    Attributes:
+        factory (CardFactory): The factory used to create cards.
+        strategy (GameStrategy): The strategy used for the game.
+        turns_simulated (int): The number of turns simulated.
+        total_damage (int): The total damage dealt.
+        cards_created (int): The number of cards created.
+    """
     def __init__(self):
+        """
+        Initialize the GameEngine.
+        """
         self.factory = None
         self.strategy = None
         self.turns_simulated = 0
@@ -11,10 +24,23 @@ class GameEngine:
 
     def configure_engine(self, factory: CardFactory,
                          strategy: GameStrategy) -> None:
+        """
+        Configure the game engine with a factory and strategy.
+
+        Args:
+            factory (CardFactory): The card factory to use.
+            strategy (GameStrategy): The game strategy to use.
+        """
         self.factory = factory
         self.strategy = strategy
 
     def simulate_turn(self) -> dict:
+        """
+        Simulate a game turn.
+
+        Returns:
+            dict: The result of the turn simulation.
+        """
         if not self.factory or not self.strategy:
             raise ValueError("Engine not configured")
 
@@ -47,6 +73,12 @@ class GameEngine:
         return turn_result
 
     def get_engine_status(self) -> dict:
+        """
+        Get the current status of the game engine.
+
+        Returns:
+            dict: A dictionary containing engine status.
+        """
         return {
             'turns_simulated': self.turns_simulated,
             'strategy_used': self.strategy.get_strategy_name()

@@ -4,7 +4,20 @@ from ex1 import SpellCard
 
 
 class AggressiveStrategy(GameStrategy):
+    """
+    A concrete implementation of AggressiveStrategy from GameStrategy.
+    """
     def execute_turn(self, hand: list, battlefield: list) -> dict:
+        """
+        Execute an aggressive turn, prioritizing damage.
+
+        Args:
+            hand (list): The list of cards in hand.
+            battlefield (list): The list of cards on the battlefield.
+
+        Returns:
+            dict: The result of the turn strategies.
+        """
         actions = {
             'cards_played': [],
             'mana_used': 0,
@@ -31,7 +44,22 @@ class AggressiveStrategy(GameStrategy):
         return actions
 
     def get_strategy_name(self) -> str:
+        """
+        Get the name of the strategy.
+
+        Returns:
+            str: "AggressiveStrategy"
+        """
         return "AggressiveStrategy"
 
     def prioritize_targets(self, available_targets: list) -> list:
+        """
+        Prioritize targets, always targeting the enemy player.
+
+        Args:
+            available_targets (list): The list of available targets.
+
+        Returns:
+            list: A list containing ["Enemy Player"].
+        """
         return ["Enemy Player"]

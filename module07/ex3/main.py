@@ -4,6 +4,9 @@ from ex3 import GameEngine, AggressiveStrategy, FantasyCardFactory
 
 
 def main():
+    """
+    Main function to game simulation with factories and strategies.
+    """
     print("\n=== DataDeck Game Engine ===\n")
 
     engine = GameEngine()

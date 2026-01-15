@@ -5,6 +5,15 @@ import alchemy.elements as direct
 
 
 def call_fn(name: str) -> str:
+    """
+    Calls a function from the alchemy module by name.
+
+    Args:
+        name (str): The name of the function to call.
+
+    Returns:
+        str: Function result or "AttributeError - not exposed" on error.
+    """
     try:
         match (name):
             case "create_fire":
@@ -20,6 +29,9 @@ def call_fn(name: str) -> str:
 
 
 def main() -> None:
+    """
+    Main function to demonstrate package-level access control.
+    """
     print("\n=== Sacred Scroll Mastery ===\n")
     print("Testing direct module access:")
     print(f"alchemy.elements.create_fire(): {direct.create_fire()}")

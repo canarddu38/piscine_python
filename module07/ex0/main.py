@@ -4,6 +4,9 @@ from ex0 import CreatureCard
 
 
 def main():
+    """
+    Main function to demonstrate abstract base class design with CreatureCard.
+    """
     print("\n=== DataDeck Card Foundation ===\n")
 
     print("Testing Abstract Base Class Design:\n")

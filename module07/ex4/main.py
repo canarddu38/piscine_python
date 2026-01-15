@@ -4,6 +4,9 @@ from ex4 import TournamentPlatform, TournamentCard
 
 
 def main():
+    """
+    Main function to manage tournament platform.
+    """
     print("=== DataDeck Tournament Platform ===\n")
 
     platform = TournamentPlatform()

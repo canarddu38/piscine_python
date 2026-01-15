@@ -2,11 +2,30 @@ from ex4 import TournamentCard
 
 
 class TournamentPlatform:
+    """
+    A class to manage a tournament platform, registering cards and matches.
+
+    Attributes:
+        cards (dict): A dictionary of registered cards.
+        matches_played (int): The number of matches played on the platform.
+    """
     def __init__(self):
+        """
+        Initialize the TournamentPlatform.
+        """
         self.cards = {}
         self.matches_played = 0
 
     def register_card(self, card: TournamentCard) -> str:
+        """
+        Register a card to the tournament platform.
+
+        Args:
+            card (TournamentCard): The card to register.
+
+        Returns:
+            str: The unique ID assigned to the registered card.
+        """
         base_id = card.name.lower().replace(" ", "_")
         existing_count = sum(1 for cid in self.cards
                              if cid.startswith(base_id))
@@ -16,8 +35,18 @@ class TournamentPlatform:
         return card_id
 
     def create_match(self, card1_id: str, card2_id: str) -> dict:
+        """
+        Create a match between two registered cards.
+
+        Args:
+            card1_id (str): The ID of the first card.
+            card2_id (str): The ID of the second card.
+
+        Returns:
+            dict: The result of the match including winner and rating changes.
+        """
         if card1_id not in self.cards or card2_id not in self.cards:
-            raise ValueError("One or both card IDs not found")
+            raise ValueError("One or both card ID doesn't exist")
 
         c1 = self.cards[card1_id]
         c2 = self.cards[card2_id]
@@ -52,6 +81,12 @@ class TournamentPlatform:
         }
 
     def get_leaderboard(self) -> list:
+        """
+        Get the leaderboard of the tournament.
+
+        Returns:
+            list: A list of dictionaries representing the leaderboard.
+        """
         sorted_cards = sorted(
             self.cards.items(),
             key=lambda item: item[1].calculate_rating(),
@@ -68,6 +103,12 @@ class TournamentPlatform:
         ]
 
     def generate_tournament_report(self) -> dict:
+        """
+        Generate a report of the tournament platform status.
+
+        Returns:
+            dict: A dictionary containing platform statistics.
+        """
         total_rating = sum(c.calculate_rating() for c in self.cards.values())
         avg_rating = total_rating / len(self.cards) if self.cards else 0
 

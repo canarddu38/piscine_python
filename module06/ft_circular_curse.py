@@ -4,6 +4,9 @@ from alchemy.transmutation.grimoire import record_spell, validate_ingredients
 
 
 def main():
+    """
+    Main function to demo circular dependency resolution with late imports.
+    """
     print("\n=== Circular Curse Breaking ===\n")
 
     print("Testing ingredient validation:")
