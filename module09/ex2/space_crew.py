@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from typing import List, Optional
+from typing import List
 from pydantic import BaseModel, Field, model_validator
 from typing_extensions import Self
 from enum import Enum
@@ -40,8 +40,10 @@ class SpaceMission(BaseModel):
         if not self.mission_id.startswith("M"):
             raise ValueError("Mission ID must start with 'M'")
 
-        if not any(m.rank in {Rank.COMMANDER, Rank.CAPTAIN} for m in self.crew):
-            raise ValueError("Mission must have at least one Commander or Captain")
+        if not any(m.rank in {Rank.COMMANDER, Rank.CAPTAIN}
+                   for m in self.crew):
+            raise ValueError("Mission must have at least one \
+Commander or Captain")
 
         if any(not m.is_active for m in self.crew):
             raise ValueError("All crew members must be active")
@@ -49,11 +51,12 @@ class SpaceMission(BaseModel):
         if self.duration_days > 365:
             experienced = sum(1 for m in self.crew if m.years_experience >= 5)
             if experienced < len(self.crew) / 2:
-                raise ValueError("Long missions require at least 50% experienced crew")
+                raise ValueError("Long missions require at least \
+50% experienced crew")
         return self
 
 
-def main():
+def main() -> None:
     print("Space Mission Crew Validation")
     print("=========================================")
     mission = SpaceMission(
@@ -99,7 +102,8 @@ def main():
     print("Crew size:", len(mission.crew))
     print("Crew members:")
     for crewmate in mission.crew:
-        print(f"- {crewmate.name} ({crewmate.rank._name_.lower()}) - {crewmate.specialization}")
+        print(f"- {crewmate.name} ({crewmate.rank._name_.lower()})\
+ - {crewmate.specialization}")
     print("\n=========================================")
     try:
         mission = SpaceMission(
@@ -122,7 +126,8 @@ def main():
         )
     except ValueError as e:
         print("Expected validation error:")
-        print(str(e).split('\n')[1].strip().replace("Value error, ", '').split('[')[0])
+        print(str(e).split('\n')[1].strip()
+              .replace("Value error, ", '').split('[')[0])
 
 
 if __name__ == "__main__":
