@@ -22,7 +22,8 @@ def display_station(station: SpaceStation) -> None:
     print(f"Crew: {station.crew_size} people")
     print(f"Power: {station.power_level}%")
     print(f"Oxygen: {station.oxygen_level}%")
-    print("Status:", "Operational" if station.is_operational else "Non Operational")
+    print("Status:", "Operational" if station.is_operational
+          else "Non Operational")
 
 
 def main():

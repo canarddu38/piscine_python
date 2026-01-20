@@ -22,20 +22,22 @@ class AlienContact(BaseModel):
     signal_strength: float = Field(..., ge=0.0, le=10.0)
     duration_minutes: int = Field(..., ge=1, le=1440)
     witness_count: int = Field(..., ge=1, le=100)
-    message_received: Optional[str] = Field(..., max_length=500)
+    message_received: Optional[str] = Field(None, max_length=500)
     is_verified: bool = False
 
     @model_validator(mode='after')
     def validator(self) -> Self:
         if not self.contact_id.startswith("AC"):
             raise Exception("Invalid contact ID")
-        if self.is_verified is False and self.contact_type == ContactType.physical:
+        if self.is_verified is False and \
+                self.contact_type == ContactType.physical:
             raise Exception("Contact need to be verified")
         if self.contact_type == ContactType.telepathic:
             if self.witness_count < 3:
-                raise Exception("Telepathic contact requires at least 3 witnesses")
+                raise Exception("Telepathic contact requires at least \
+3 witnesses")
         if self.signal_strength > 7.0:
-            if not hasattr(self, "message_received"):
+            if self.message_received is None:
                 raise Exception("Strong signals must include messages")
         return self
 
